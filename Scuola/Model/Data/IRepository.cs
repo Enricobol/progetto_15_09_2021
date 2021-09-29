@@ -8,18 +8,20 @@ namespace Scuola.Model.Data
 {
     public interface IRepository
     {
-
+       
   
-        List<Corso> GetCourses(); 
+        IEnumerable<Corso> GetCourses();
         Corso FindCourseById(long id);
         Corso UpdateCourse(Corso corso);
         IEnumerable<EdizioneCorso> FindEditionsByCourse(long idCorso);
         Corso AddCourse(Corso corso);
 
-        //EdizioneCorso AddEdizione(EdizioneCorso edizioneCorso); //Metodo che aggiunge un'edizione corso 
-        //Corso BetterFindById(long id); //Metodo migliore che trova un corso per id
+        EdizioneCorso AddEdizione(EdizioneCorso edizioneCorso); 
+        bool CourseExists(Corso c); 
+
+        //Corso BetterFindCourseById(long id); //Metodo migliore che trova un corso per id
         //Report GenerateReport(long idCorso);
-        //bool CourseExists(Corso c); //Scrivi il Metodo + efficente possibile , con i set probabilmente
+
     }
 }
  //IEnumerable è come una sequenza (interfaccia) di oggetti che può essere solo letta

@@ -21,7 +21,7 @@ namespace Scuola.Model.Data
             User = sa;
             Password = 1Secure*Password;
             Database = scuola
-         "; 
+         ";
 
         const string SELECT_ALL_COURSES = @"SELECT  id , titolo , descrizione , ammontareOre , costoRiferimento , idLivello , idProgetto , idCategoria 
                                             FROM dbo.Corsi";
@@ -33,12 +33,15 @@ namespace Scuola.Model.Data
                                             WHERE id = @idCorso";
         const string CREATE_COURSE = @"INSERT INTO dbo.Corsi (id , titolo , descrizione , ammontareOre , costoRiferimento , idLivello , idProgetto , idCategoria)
                                        OUTPUT INSERTED.id                                      
-                                       VALUES (@titolo , @descrizione , @ammontareOre , @costoRiferimento , @idLivello , @idProgetto , @idCategoria)";                                    
+                                       VALUES (@titolo , @descrizione , @ammontareOre , @costoRiferimento , @idLivello , @idProgetto , @idCategoria)";
         const string FIND_EDITION_BY_COURSE_ID = @"SELECT id , codiceEdizione , dataInizio , dataFine , prezzoFinale , minNumStudenti , maxNumStudenti , inPresenze , idAula , idEntiFinanzianti , idCorso
                                                 FROM dbo.Edizioni
                                                 WHERE idCorso = (SELECT id
                                                                 FROM dbo.Corsi
                                                                 WHERE id = @idCorso)";
+        const string CREATE_EDITION = @"SELECT id, codiceEdizione, dataInizio, dataFine, prezzoFinale, minNumStudenti, maxNumStudenti, inPresenze, idAula, idEntiFinanzianti, idCorso
+                                       OUTPUT INSERTED.id                                      
+                                       VALUES (@id, @codiceEdizione, @dataInizio, @dataFine, @prezzoFinale, @minNumStudenti, @maxNumStudenti, @inPresenze, @idAula, @idEntiFinanzianti, @idCorso)";
 
         #region METODO DB AddCourse : Aggiungi un corso al Database
         public Corso AddCourse(Corso c)
@@ -117,7 +120,7 @@ namespace Scuola.Model.Data
         #endregion
 
         #region METODO DB GetCourses : Connetti al server, Leggi, Crea una lista di corsi
-        public List<Corso> GetCourses()
+        public IEnumerable<Corso> GetCourses()
         {
             List<Corso> cs = new List<Corso>();
             try
@@ -135,7 +138,7 @@ namespace Scuola.Model.Data
                                 titolo: reader.GetString("titolo"),
                                 descrizione: reader.GetString("descrizione"),
                                 ammontareOre: reader.GetInt32("ammontareOre"),
-                                costoRiferimento: (decimal)reader.GetInt32("costoRiferimento"),
+                                costoRiferimento: reader.GetDecimal("costoRiferimento"),
                                 idLivello: reader.GetInt32("idLivello"),
                                 idProgetto: reader.GetInt32("idProgetto"),
                                 idCategoria: reader.GetInt32("idCategoria")
@@ -252,5 +255,58 @@ namespace Scuola.Model.Data
             }
         }
         #endregion
+
+        public EdizioneCorso AddEdizione(EdizioneCorso ec)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
+                {
+                    SqlCommand cmd = new SqlCommand(CREATE_COURSE);
+
+                    conn.Open();
+
+                    cmd.Parameters["@codiceEdizione"].Value = ec.CodiceEdizione;
+                    cmd.Parameters["@dataInizio"].Value = ec.DataInizio;
+                    cmd.Parameters["@dataFine"].Value = ec.DataFine;
+                    cmd.Parameters["@prezzoFinale"].Value = ec.PrezzoFinale;
+                    cmd.Parameters["@minNumStudenti"].Value = ec.MinNumStudenti;
+                    cmd.Parameters["@maxNumStudenti"].Value = ec.MaxNumStudenti;
+                    cmd.Parameters["@inPresenze"].Value = ec.InPresenze;
+                    cmd.Parameters["@idAula"].Value = ec.IdAula;
+                    cmd.Parameters["@idEntiFinanzianti"].Value = ec.IdEnteFinanziante;
+                    cmd.Parameters["@idCorso"].Value = ec.IdCorso;
+
+                    //cmd.ExecuteNonQuery();
+                    ec.Id = (long)cmd.ExecuteScalar(); //Ritrona l'id del corso appena inserito
+
+                    return ec;
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("error: " + e);
+
+                SchoolDataException de = new SchoolDataException(e.Message, e);
+                throw de;
+            }
+        }
+
+
+
+        public Corso BetterFindCourseById(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Report GenerateReport(long idCorso)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CourseExists(Corso c)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

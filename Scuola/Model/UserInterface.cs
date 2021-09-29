@@ -88,7 +88,7 @@ namespace Scuola.Model
         }
 
 
-        //METODI DELL'USER INTERFACE VECCHI
+        //METODI DELL'USER INTERFACE 
         #region METODO ShowCoursesEditionByCourse : Stampa tutte le edizioni di uno specifico corso, basandosi sull ID
         private void ShowCoursesEditionByCourse()
         {
@@ -109,16 +109,15 @@ namespace Scuola.Model
 
             long id = ReadLong("Inserisci l'id del corso: ");
             string titolo = ReadString("Inserisci il nome del corso: ");
-            int durataString = (int)ReadLong("Inserisci la durata in ore del corso: ");
-
-            string levelString = ReadString("Inserisci il livello del corso:\n| PRINCIPIANTE | MEDIO | ESPERTO | GURU | ");
-            Enum.TryParse(levelString, out ExperienceLevel level); //Cerco di passare la stringa livello ad un tipo ExperienceLevel 
-
-            string descrizione = ReadString("Inserisci la descrizione del corso: ");
-            decimal prezzo = ReadDecimal("Inserici il costo del corso: ");
-
+            string descrizione = ReadString("Inserisci la durata in ore del corso: ");
+            int ammontareOre = ReadInt("Inserisci l'id del livello: "); ;
+            decimal costoRiferimento = ReadDecimal("Inserici il costo del corso: ");
+            int idLivello = ReadInt("Inserisci l'id del livello: ");
+            int idProgetto = ReadInt("Inserisci l'id del progetto: ");
+            int idCategoria = ReadInt("Inserisci l'id della categoria: "); ;
             //Inserisci le variabili all'interno di un nuovo corso
-            Corso c = new Corsi(id, titolo, durataString, level, descrizione, prezzo);
+            Corso c = new Corso(id, titolo, descrizione, ammontareOre,
+                    costoRiferimento, idLivello, idProgetto, idCategoria);
             CourseService.CreateCourse(c);
             WriteLine("Corso inserito.");
         }
@@ -141,12 +140,19 @@ namespace Scuola.Model
         private void CreateCourseEdition()
         {
             long id = ReadLong("Inserisci l'id edizione corso: ");
-            long idCorso = ReadLong("Inserisci l'id corso a cui appartiene: ");
-            LocalDate start = ReadLocalDate("Inserisci data di inizio: ");
-            LocalDate end = ReadLocalDate("Inserisci data di termine: ");
-            int numStudens = (int)ReadLong("Inserisci il numero degli studenti: ");
-            decimal realPrice = ReadDecimal("Inserici il prezzo finale edizione corso: ");
-            EdizioneCorso edition = new EdizioneCorso(id, null, start, end, numStudens, realPrice);
+            int codiceEdizione = ReadInt("Inserisci l'id corso a cui appartiene: ");
+            LocalDate dataInizio = ReadLocalDate("Inserisci data di inizio: ");
+            LocalDate dataFine = ReadLocalDate("Inserisci data di termine: ");
+            decimal prezzoFinale = ReadDecimal("Inserici il prezzo finale edizione corso: ");
+            int minNumStudenti = ReadInt("Inserisci il numero degli studenti: ");
+            int maxNumStudenti = ReadInt("Inserisci il numero degli studenti: ");
+            bool inPresenze = ReadBool("Inserisci y se e' in presenza e n se e' in SmartWorking");
+            int idEnteFinanziante = ReadInt("Inserisci l'id del ente finanziatore: ");
+            int idAula = ReadInt("Inserisci l'id dell'aula: ");
+            int idCorso = ReadInt("Inserisci l'id del corso: ");
+            EdizioneCorso edition = new EdizioneCorso(id, codiceEdizione, dataInizio, dataFine,
+                                                        prezzoFinale, minNumStudenti, maxNumStudenti,
+                                                        inPresenze, idEnteFinanziante, idAula, idCorso);
             CourseService.CreateCurseEdition(edition, idCorso);
         }
         #endregion
@@ -171,6 +177,17 @@ namespace Scuola.Model
         }
         #endregion
 
+        #region METODO ReadBool : Per leggere un tasto, ritorna vero o falso
+        private bool ReadBool(string prompt)
+        {
+            if (prompt == "y")
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
         #region METODO ReadLong : Prendi una stringa e cerca di ottenere un long, ripeti in caso di errore. (usa ReadString)
         private long ReadLong(string prompt)
         {
@@ -181,6 +198,26 @@ namespace Scuola.Model
             {
                 string answer = ReadString(prompt);
                 isNumber = long.TryParse(answer, out num); //Prende una stringa e prova a convertirla in un numero, ti dice anche se ci riesce.
+                if (!isNumber)
+                {
+                    WriteLine("Devi inserire un numero!");
+                }
+
+            } while (!isNumber);
+            return num;
+        }
+        #endregion
+
+        #region METODO ReadInt : Prendi una stringa e cerca di ottenere un int, ripeti in caso di errore. (usa ReadString)
+        private int ReadInt(string prompt)
+        {
+            bool isNumber = false;
+            int num;
+
+            do
+            {
+                string answer = ReadString(prompt);
+                isNumber = int.TryParse(answer, out num); //Prende una stringa e prova a convertirla in un numero, ti dice anche se ci riesce.
                 if (!isNumber)
                 {
                     WriteLine("Devi inserire un numero!");
@@ -244,7 +281,7 @@ namespace Scuola.Model
                 }
                 catch (NodaTime.Text.UnparsableValueException ue)
                 {
-                    WriteLine("Data non valida!");
+                    WriteLine("Data non valida!" +ue.Message);
                 }
 
 

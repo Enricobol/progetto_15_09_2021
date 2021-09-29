@@ -10,14 +10,14 @@ namespace Scuola
     {
         static void Main(string[] args)
         {
-            //IRepository repo = new InMemoryRepository(); //Creo una nuova reopsitry dove memorizzare Corsi ed Edizioni
-            //CourseService cs = new CourseService(repo);  //Creo un servizio corsi e gli ignetto la repositry in modo che la usi
-            //UserInterface ui = new UserInterface(cs);    //Creo l'interfaccia utente e gli ignetto il servizio
+            IRepository repo = new InMemoryRepository(); //Creo una nuova reopsitry dove memorizzare Corsi ed Edizioni
+            CourseService cs = new CourseService(repo);  //Creo un servizio corsi e gli ignetto la repositry in modo che la usi
+            UserInterface ui = new UserInterface(cs);    //Creo l'interfaccia utente e gli ignetto il servizio
 
 
 
-            ////Parto con l'interfaccia
-            //ui.Start();
+            //Parto con l'interfaccia
+            ui.Start();
 
             #region Esempi di Delegati 
             //EdizioneCorso ed = new EdizioneCorso(1124, null, new LocalDate(2021, 9, 20), new LocalDate(2021, 9, 30), 25, 64.21m);
@@ -39,32 +39,23 @@ namespace Scuola
             //Creare una seconda implementazione di IRepository che vada ad agire direttamente sul database tramite ADO.net che riesca
             //a gestire le modifiche e le richieste sul DB
 
+            Console.WriteLine("Prendi tutti i corsi dal Database\n");
             RepositoryDB repoDB = new RepositoryDB();
-            List<Corso> cl = new List<Corso>();
+            IEnumerable<Corso> cl = new List<Corso>();
             cl = repoDB.GetCourses();
-
-
-            Console.WriteLine(cl[0].Titolo);
-            Console.WriteLine(cl[0].Id);
-            Console.WriteLine(cl[0].CostoRiferimento);
-
-            Console.WriteLine(cl[1].Titolo);
-            Console.WriteLine(cl[1].Id);
-            Console.WriteLine(cl[1].CostoRiferimento);
-
-            Console.WriteLine(cl[2].Titolo);
-            Console.WriteLine(cl[2].Id);
-            Console.WriteLine(cl[2].CostoRiferimento);
-
-            Console.ReadKey();
-
-            IEnumerable<EdizioneCorso> ecl = new List<EdizioneCorso>();
-            ecl = repoDB.FindEditionsByCourse(1);
-            foreach (var Id in ecl)
+            foreach (var Id in cl)
             {
-                Console.WriteLine(Id.Id);
+                Console.WriteLine(Id.ToString());
             }
 
+
+            //IEnumerable<EdizioneCorso> ecl = new List<EdizioneCorso>();
+            //ecl = repoDB.FindEditionsByCourse(1);
+            //foreach (var Id in ecl)
+            //{
+            //    Console.WriteLine(Id.Id);
+            //}
+            Console.WriteLine("Missione compiuta\n");
             Console.ReadKey();
         }
 

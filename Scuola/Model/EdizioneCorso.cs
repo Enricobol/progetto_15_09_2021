@@ -53,22 +53,22 @@ namespace Scuola.Model
 
         public override string ToString()  //Sovrascrive il metodo virtuale dell'oggetto per stampare quello che vogliamo
         {
-            return $"id: {Id} titolo: {Corso.Titolo} Data inizio: {Start} Prezzo finale: {RealPrice}"; //Non è una stringa normale con $, ma posso ficcarci dentro le variabili
+            return $"id: {Id} titolo: {Corso.Titolo} Data inizio: {DataInizio} Prezzo finale: {PrezzoFinale}"; //Non è una stringa normale con $, ma posso ficcarci dentro le variabili
         }
 
-        //FUNZIONI DELEGATE
-        public int Iscrivi()
-        {
-            return 10;
-        }
-        public void AggiornaEdizione()
-        {
-            NumStudents += ad();
-        }
-        public void ChangeAdder(AddStudents x) //Passo un oggetto di classe Addstudents alla funzione
-        {
-            ad = x;
-        }
+        ////FUNZIONI DELEGATE
+        //public int Iscrivi()
+        //{
+        //    return 10;
+        //}
+        //public void AggiornaEdizione()
+        //{
+        //    NumStudents += ad();
+        //}
+        //public void ChangeAdder(AddStudents x) //Passo un oggetto di classe Addstudents alla funzione
+        //{
+        //    ad = x;
+        //}
 
 
     }
