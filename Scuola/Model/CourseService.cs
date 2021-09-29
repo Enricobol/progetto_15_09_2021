@@ -37,6 +37,13 @@ namespace Scuola.Model
         }
         #endregion
 
+
+        public IEnumerable<EdizioneCorso> FindEditionsByCourse(long id)
+        {
+            return Repository.FindEditionsByCourse(id);
+        }
+        #endregion
+
         #region METODO CreateCurseEdition : Crea un'edizione corso, trova un corso in memoria è c'è la inserisce dentro.
         public EdizioneCorso CreateCurseEdition(EdizioneCorso e, long idCorso)
         {

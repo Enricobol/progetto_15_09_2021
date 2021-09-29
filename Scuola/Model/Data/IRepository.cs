@@ -15,7 +15,6 @@ namespace Scuola.Model.Data
         Corso UpdateCourse(Corso corso);
         IEnumerable<EdizioneCorso> FindEditionsByCourse(long idCorso);
         Corso AddCourse(Corso corso);
-
         EdizioneCorso AddEdizione(EdizioneCorso edizioneCorso); 
         bool CourseExists(Corso c); 
 

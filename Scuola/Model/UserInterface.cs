@@ -1,4 +1,5 @@
 ﻿using NodaTime;
+using Scuola.Model.Data;
 using Scuola.Model.Data.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,9 @@ namespace Scuola.Model
                         case 'c':
                             CreateCourse();
                             break;
+                        case 'd': 
+                            ShowCoursesEditionByCourseDB();//METODO DB NUOVO
+                            break;
                         case 'e':
                             ShowCoursesEditionByCourse();
                             break;
@@ -86,7 +90,22 @@ namespace Scuola.Model
             #endregion
 
         }
+        //METODI DELL'USER INTERFACE PER DATABASE!!!
+        #region METODO DB ShowCoursesEditionByCourse : Stampa tutte le edizioni di uno specifico corso, basandosi sull ID
+        private void ShowCoursesEditionByCourseDB()
+        {
+            long idDB = ReadLong("Inserisci l'id del corso da ricercare nel DATABASE: ");
 
+            Console.WriteLine("Prendo tutte le edizioni...\n");
+            IEnumerable<EdizioneCorso> eclDB = CourseService.FindEditionsByCourse(idDB);
+
+            foreach (var Id in eclDB)
+            {
+                Console.WriteLine(Id.ToString());
+            }
+            Console.WriteLine("Missione compiuta\n");
+        }
+        #endregion
 
         //METODI DELL'USER INTERFACE 
         #region METODO ShowCoursesEditionByCourse : Stampa tutte le edizioni di uno specifico corso, basandosi sull ID
@@ -101,7 +120,6 @@ namespace Scuola.Model
             }
         }
         #endregion
-
 
         #region METODO CreateCourse : Crea le variabili da inserire nel corso e richiedi all'utente di compilarle
         private void CreateCourse()
@@ -123,7 +141,6 @@ namespace Scuola.Model
         }
         #endregion
 
-
         #region ShowCourses : Stampa tutti i corsi
         private void ShowCourses()
         {
@@ -134,7 +151,6 @@ namespace Scuola.Model
             }
         }
         #endregion
-
 
         #region CreateCourseEdition : Crea una nuova edizone corso chiedendo all'utente di compilare
         private void CreateCourseEdition()
@@ -156,7 +172,6 @@ namespace Scuola.Model
             CourseService.CreateCurseEdition(edition, idCorso);
         }
         #endregion
-
 
         #region GenerateReport : Genera un report contenente molte informazioni sui prezzi del corso
         public void GenerateReport()

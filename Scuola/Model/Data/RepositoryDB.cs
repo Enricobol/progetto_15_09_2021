@@ -43,6 +43,10 @@ namespace Scuola.Model.Data
                                        OUTPUT INSERTED.id                                      
                                        VALUES (@id, @codiceEdizione, @dataInizio, @dataFine, @prezzoFinale, @minNumStudenti, @maxNumStudenti, @inPresenze, @idAula, @idEntiFinanzianti, @idCorso)";
 
+        //Aggiunta di un nuovo corso nel database
+        //RepositoryDB.AddCourse();
+
+
         #region METODO DB AddCourse : Aggiungi un corso al Database
         public Corso AddCourse(Corso c)
         {
@@ -291,7 +295,6 @@ namespace Scuola.Model.Data
                 throw de;
             }
         }
-
 
 
         public Corso BetterFindCourseById(long id)

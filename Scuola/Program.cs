@@ -13,7 +13,7 @@ namespace Scuola
             IRepository repo = new InMemoryRepository(); //Creo una nuova reopsitry dove memorizzare Corsi ed Edizioni
             CourseService cs = new CourseService(repo);  //Creo un servizio corsi e gli ignetto la repositry in modo che la usi
             UserInterface ui = new UserInterface(cs);    //Creo l'interfaccia utente e gli ignetto il servizio
-
+            RepositoryDB repoDB = new RepositoryDB();
 
 
             //Parto con l'interfaccia
@@ -40,7 +40,7 @@ namespace Scuola
             //a gestire le modifiche e le richieste sul DB
 
             Console.WriteLine("Prendi tutti i corsi dal Database\n");
-            RepositoryDB repoDB = new RepositoryDB();
+            //RepositoryDB repoDB = new RepositoryDB();
             IEnumerable<Corso> cl = new List<Corso>();
             cl = repoDB.GetCourses();
 
@@ -49,9 +49,6 @@ namespace Scuola
             {
                 Console.WriteLine(Id.ToString());
             }
-
-            //RepositoryDB.AddCourse();
-
 
             Console.WriteLine("Prendi tutte le edizioni corso di 1\n");
             IEnumerable<EdizioneCorso> ecl = new List<EdizioneCorso>();
