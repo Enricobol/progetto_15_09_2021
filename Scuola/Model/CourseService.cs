@@ -46,6 +46,7 @@ namespace Scuola.Model
                 return null; //GENERA UN'ECCEZIONE CORSO => entitynotfoundexp
             }
             e.Corso = found;
+            
             Repository.AddEdizione(e);
             return e;
         }

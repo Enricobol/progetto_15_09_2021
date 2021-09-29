@@ -43,18 +43,23 @@ namespace Scuola
             RepositoryDB repoDB = new RepositoryDB();
             IEnumerable<Corso> cl = new List<Corso>();
             cl = repoDB.GetCourses();
+
+            Console.WriteLine("Prendi tutti i corsi dal Database\n");
             foreach (var Id in cl)
             {
                 Console.WriteLine(Id.ToString());
             }
 
+            //RepositoryDB.AddCourse();
 
-            //IEnumerable<EdizioneCorso> ecl = new List<EdizioneCorso>();
-            //ecl = repoDB.FindEditionsByCourse(1);
-            //foreach (var Id in ecl)
-            //{
-            //    Console.WriteLine(Id.Id);
-            //}
+
+            Console.WriteLine("Prendi tutte le edizioni corso di 1\n");
+            IEnumerable<EdizioneCorso> ecl = new List<EdizioneCorso>();
+            ecl = repoDB.FindEditionsByCourse(2);
+            foreach (var Id in ecl)
+            {
+                Console.WriteLine(Id.ToString());
+            }
             Console.WriteLine("Missione compiuta\n");
             Console.ReadKey();
         }

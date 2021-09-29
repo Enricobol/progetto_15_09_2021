@@ -53,7 +53,7 @@ namespace Scuola.Model
 
         public override string ToString()  //Sovrascrive il metodo virtuale dell'oggetto per stampare quello che vogliamo
         {
-            return $"id: {Id} titolo: {Corso.Titolo} Data inizio: {DataInizio} Prezzo finale: {PrezzoFinale}"; //Non è una stringa normale con $, ma posso ficcarci dentro le variabili
+            return $"id: {Id} CodiceEdizione:{CodiceEdizione} Data inizio: {DataInizio} Prezzo finale: {PrezzoFinale}"; //Non è una stringa normale con $, ma posso ficcarci dentro le variabili
         }
 
         ////FUNZIONI DELEGATE

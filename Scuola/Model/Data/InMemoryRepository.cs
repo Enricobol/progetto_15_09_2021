@@ -9,9 +9,10 @@ namespace Scuola.Model.Data
 {
     public class InMemoryRepository : IRepository //Implemento (Figlia di) IRepository
     {
+
         //VARIABILI
-       // private List<Corso> courses = new List<Corso>(); //Lista di corsi
-       // private List<EdizioneCorso> courseEditions = new List<EdizioneCorso>(); //Lista di edizioni corsi
+        // private List<Corso> courses = new List<Corso>(); //Lista di corsi
+        // private List<EdizioneCorso> courseEditions = new List<EdizioneCorso>(); //Lista di edizioni corsi
 
         //Posso passare da list a set senza problemi
         private ISet<Corso> courses = new HashSet<Corso>(); //Set di elementi: Rifiuta i duplicati ed è estremamente efficiente nel trovare gli elementi
@@ -23,21 +24,27 @@ namespace Scuola.Model.Data
 
             #region MyRegion VECCHIA CREAZIONE DATI
             //Popolo con dei corsi ed edizioni per vedere se funziona
-            Corso c1 = new Corsi(345, "Matematica", 50, ExperienceLevel.PRINCIPIANTE, "molto bello", 19.99m);
+            //long id, string titolo, string descrizione, int ammontareOre, decimal costoRiferimento, int idLivello, int idProgetto, int idCategoria
+            Corso c1 = new Corso(345, "MateFagoilatica","Addizioni e sottrazioni legumari", 50, 500.50m, 1 , 1 , 1);
             courses.Add(c1);
-            Corso c2 = new Corsi(678, "Inglese", 45, ExperienceLevel.GURU, "molto brutto", 17.99m);
+            Corso c2 = new Corso(678, "AncheIProgrammMangianoFagiol", "Impara a mangiare i fagioli", 999, 0.50m, 1, 2, 2);
             courses.Add(c2);
 
             Console.WriteLine("Il numero di corsi nel set è {0}", courses.Count);
-
-            EdizioneCorso e1 = new EdizioneCorso(1124, c1, new LocalDate(2021, 9, 20), new LocalDate(2021, 9, 30), 25, 64.21m);
+            //long id, int codiceEdizione, LocalDate dataInizio, LocalDate dataFine, decimal prezzoFinale, int minNumStudenti, int maxNumStudenti,bool inPresenze, int idEnteFinanziante,int idAula, int idCorso
+            EdizioneCorso e1 = new EdizioneCorso(0, 0, new LocalDate(2022, 9, 20), new LocalDate(2022, 9, 23), 29.99m, 3, 24, true, 1, 2, 4);
+            e1.Corso = c1;
             courseEditions.Add(e1);
-            EdizioneCorso e2 = new EdizioneCorso(1135, c1, new LocalDate(2022, 9, 20), new LocalDate(2022, 9, 30), 18, 32.21m);
+            EdizioneCorso e2 = new EdizioneCorso(1, 1, new LocalDate(2022, 8, 20), new LocalDate(2022, 8, 23), 500.99m, 5, 32, false, 2, 1, 4);
+            e2.Corso = c1;
             courseEditions.Add(e2);
-            EdizioneCorso e3 = new EdizioneCorso(1146, c1, new LocalDate(2023, 9, 20), new LocalDate(2023, 9, 30), 22, 32.21m);
+            EdizioneCorso e3 = new EdizioneCorso(3, 3, new LocalDate(2023, 9, 20), new LocalDate(2023, 9, 23), 79.99m, 12, 44, true, 1, 2, 5);
+            e3.Corso = c2;
             courseEditions.Add(e3);
-            EdizioneCorso e4 = new EdizioneCorso(1157, c1, new LocalDate(2024, 9, 20), new LocalDate(2024, 9, 30), 30, 45.21m);
+            EdizioneCorso e4 = new EdizioneCorso(4, 4, new LocalDate(2023, 9, 10), new LocalDate(2023, 10, 23), 20.99m, 53, 1000, false, 2, 1, 5);
+            e4.Corso = c2;
             courseEditions.Add(e4);
+
             #endregion
 
         }
@@ -64,14 +71,16 @@ namespace Scuola.Model.Data
         #endregion
 
         #region METODO FindEditionByCourse : Dato il numero ID voglio tutte le edizioni di corso con quell'id inseriti in un IEnumerable.
-        public IEnumerable<EdizioneCorso> FindEditionByCourse(long courseId)
+        public IEnumerable<EdizioneCorso> FindEditionsByCourse(long courseId)
         {
             List<EdizioneCorso> editions = new List<EdizioneCorso>(); //Variabile lista per ficcarci dentro i corsi giusti
             foreach (var ed in courseEditions)
             {
-                if (ed.Corso.Id == courseId) //Dobbiamo cercare per ogni: EdizioneCorso->Corso->ID = courseId
+
+                if ((int)ed.Corso.Id == (int)courseId) //Dobbiamo cercare per ogni: EdizioneCorso->Corso->ID = courseId
                 {
                     editions.Add(ed); //Ficco nella lista che ritornerò il corso con l'Id
+                    
                 }
             }
             return editions;
@@ -129,12 +138,6 @@ namespace Scuola.Model.Data
         {
             throw new NotImplementedException();
         }
-
-        public IEnumerable<EdizioneCorso> FindEditionsByCourse(long idCorso)
-        {
-            throw new NotImplementedException();
-        }
-
 
     }
 }
