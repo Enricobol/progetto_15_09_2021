@@ -155,7 +155,5 @@ namespace Scuola.Model
         public decimal TotalPrice { get; set; }
         public int NumElements { get; set; }
 
-
-        #endregion
     }
 }

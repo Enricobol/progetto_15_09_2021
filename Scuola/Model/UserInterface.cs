@@ -46,9 +46,9 @@ namespace Scuola.Model
                         case 'c':
                             CreateCourse();
                             break;
-                        case 'd': 
-                            ShowCoursesEditionByCourseDB();//METODO DB NUOVO
-                            break;
+                        //case 'd': 
+                        //    ShowCoursesEditionByCourseDB();//METODO DB NUOVO
+                        //    break;
                         case 'e':
                             ShowCoursesEditionByCourse();
                             break;
@@ -92,19 +92,19 @@ namespace Scuola.Model
         }
         //METODI DELL'USER INTERFACE PER DATABASE!!!
         #region METODO DB ShowCoursesEditionByCourse : Stampa tutte le edizioni di uno specifico corso, basandosi sull ID
-        private void ShowCoursesEditionByCourseDB()
-        {
-            long idDB = ReadLong("Inserisci l'id del corso da ricercare nel DATABASE: ");
+        //private void ShowCoursesEditionByCourseDB()
+        //{
+        //    long idDB = ReadLong("Inserisci l'id del corso da ricercare nel DATABASE: ");
 
-            Console.WriteLine("Prendo tutte le edizioni...\n");
-            IEnumerable<EdizioneCorso> eclDB = CourseService.FindEditionsByCourse(idDB);
+        //    Console.WriteLine("Prendo tutte le edizioni...\n");
+        //    IEnumerable<EdizioneCorso> eclDB = CourseService.FindEditionsByCourse(idDB);
 
-            foreach (var Id in eclDB)
-            {
-                Console.WriteLine(Id.ToString());
-            }
-            Console.WriteLine("Missione compiuta\n");
-        }
+        //    foreach (var Id in eclDB)
+        //    {
+        //        Console.WriteLine(Id.ToString());
+        //    }
+        //    Console.WriteLine("Missione compiuta\n");
+        //}
         #endregion
 
         //METODI DELL'USER INTERFACE 
