@@ -36,7 +36,7 @@ namespace Scuola.Model
             Descrizione = descrizione;
             AmmontareOre = ammontareOre;
             CostoRiferimento = costoRiferimento;
-            IdLivello = idLivello;
+            IdLivello = idLivello;  //SCAMBIA IDlivello con livello ID, questo per tutti gli IDdati
             IdProgetto = idProgetto;
             IdCategoria = idCategoria;
         }
