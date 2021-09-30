@@ -8,7 +8,7 @@ using static Scuola.Model.Data.EF.EFCrudRepository;
 
 namespace Scuola.Model.Data.EF
 {
-    class EFCourseEditionRepository :CrudRepository<EdizioneCorso,long> , ICourseEditionRepository
+    public class EFCourseEditionRepository : CrudRepository<EdizioneCorso,long> , ICourseEditionRepository
     {
     }
 }

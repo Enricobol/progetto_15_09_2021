@@ -8,8 +8,8 @@ namespace Scuola.Model.Data.InMemory
 {
     public class InMemoryCourseRepository : ICrudRepository<Corso, long>
     {
-        private static List<Corso> corsi = new List<Corso>;
-        static long lastIdCourse
+        private static List<Corso> corsi = new List<Corso>();
+        static long lastIdCourse = 0;
         public void Create(Corso newElement)
         {
 
@@ -50,7 +50,7 @@ namespace Scuola.Model.Data.InMemory
 
         public IEnumerable<Corso> FindByTitleLike(string part)
         {
-            return corsi.Where(c => char c.Titolo.Contains(part))
+            return corsi.Where(c =>  c.Titolo.Contains(part));
         }
     }
 }
