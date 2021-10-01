@@ -4,7 +4,7 @@ using System.Linq; // Una libreria speciale! per cercare dentro un IEnumerable c
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scuola.Model
+namespace Scuola.Entities
 {
     public class Report
     {
@@ -32,12 +32,11 @@ namespace Scuola.Model
         {
 
         }
-        #region METODO StampReport : stampa a schermo il report
+
         //OUTPUT ->  n-edizioni | somma prezzi | media prezzi | mediana prezzi | moda prezzi | n-max studenti | n-min studenti
         public override string ToString()  //Sovrascrive il metodo virtuale dell'oggetto per stampare quello che vogliamo
         {
             return $"id: {NumEditions} | Somma: {SumPrice} | Media: {AveragePrice} | Mediana: {MedianPrice} | Moda: {ModaPrice} | Studenti max: {NumMaxStudents}| min: {NumMinStudents}"; //Non è una stringa normale con $, ma posso ficcarci dentro le variabili
         }
-        #endregion
     }
 }

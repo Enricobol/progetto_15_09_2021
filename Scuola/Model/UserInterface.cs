@@ -1,4 +1,5 @@
 ﻿using NodaTime;
+using Scuola.Entities;
 using Scuola.Model.Data;
 using Scuola.Model.Data.Exceptions;
 using System;

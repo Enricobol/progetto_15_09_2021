@@ -1,4 +1,5 @@
 ﻿using Scuola.Model.Data;
+using Scuola.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

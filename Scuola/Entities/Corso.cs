@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NodaTime;
 
-namespace Scuola.Model
+namespace Scuola.Entities
 {
     public class Corso
     {
@@ -16,9 +16,9 @@ namespace Scuola.Model
         public int AmmontareOre { get; set; }
         public decimal CostoRiferimento { get; set; }
         //PROPRIETA' FOREING KEYS
-        public long IdLivello { get; set; }
-        public long IdProgetto { get; set; }
-        public long IdCategoria { get; set; }
+        public long LivelloId { get; set; }
+        public long ProgettoId { get; set; }
+        public long CategoriaId { get; set; }
         //PROPRIETA' CLASSI
         public Livello Livello { get; set; }
         public Progetto Progetto { get; set; }
@@ -29,19 +29,20 @@ namespace Scuola.Model
 
         //COSTRUTTORE
         public Corso(long id, string titolo, string descrizione, int ammontareOre,
-                    decimal costoRiferimento, int idLivello, int idProgetto, int idCategoria)
+                    decimal costoRiferimento, long livelloId, long progettoId, long categoriaId)
         {
             Id = id;
             Titolo = titolo;
             Descrizione = descrizione;
             AmmontareOre = ammontareOre;
             CostoRiferimento = costoRiferimento;
-            IdLivello = idLivello;  //SCAMBIA IDlivello con livello ID, questo per tutti gli IDdati
-            IdProgetto = idProgetto;
-            IdCategoria = idCategoria;
+            LivelloId = livelloId;  
+            ProgettoId = progettoId;
+            CategoriaId = categoriaId;
         }
 
-        #region METODI OVERRIDE : ToString , Equals , GetHashCode : Modifico la funzione base.
+
+        //METODO Override per stampare i dati nella classe
         public override string ToString() //Sovrascrive il metodo virtuale dell'oggetto per stampare quello che vogliamo
         {
             return $"id: {Id} titolo: {Titolo} ammontare ore: {AmmontareOre} costo riferimento: {CostoRiferimento} " +
@@ -59,10 +60,10 @@ namespace Scuola.Model
         {
             return (int)Id;
         }
-        #endregion
+
     }
-    public enum ExperienceLevel
-    {
-        PRINCIPIANTE, MEDIO, ESPERTO, GURU
-    }
+    //public enum ExperienceLevel
+    //{
+    //    PRINCIPIANTE, MEDIO, ESPERTO, GURU
+    //}
 }

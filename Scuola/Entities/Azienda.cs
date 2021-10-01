@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scuola.Model
+namespace Scuola.Entities
 {
     public class Azienda
     {
@@ -33,5 +33,12 @@ namespace Scuola.Model
         {
 
         }
+
+        //METODO Override per stampare i dati nella classe
+        public override string ToString()
+        {
+            return $"id: {Id} Nome: {Nome} Indirizzo: {Indirizzo} Citta: {Citta}  CodicePostale: {CodicePostale} Email: {Email} PartitaIva: {PartitaIva}";
+        }
+
     }
 }

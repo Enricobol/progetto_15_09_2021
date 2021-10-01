@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scuola.Model
+namespace Scuola.Entities
 {
     public class Livello
     {
@@ -24,6 +24,12 @@ namespace Scuola.Model
         public Livello()
         {
 
+        }
+
+        //METODO Override per stampare i dati nella classe
+        public override string ToString()
+        {
+            return $"id: {Id} Tipologia: {Tipologia} \nDescrizione: {Descrizione} ";
         }
 
     }

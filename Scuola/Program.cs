@@ -3,6 +3,7 @@ using Scuola.Model.Data;
 using System;
 using NodaTime;
 using System.Collections.Generic;
+using Scuola.Entities;
 
 namespace Scuola
 {

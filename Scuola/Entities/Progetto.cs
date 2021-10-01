@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scuola.Model
+namespace Scuola.Entities
 {
     public class Progetto
     {
@@ -12,20 +12,27 @@ namespace Scuola.Model
         public long Id { get; set; }
         public string Tipologia { get; set; }
         //PROPRIETA' FOREING KEYS
-        public long IdAzienda { get; set; }
+        public long AziendaId { get; set; }
         //PROPRIETA' CLASSI
         public Azienda Azienda { get; set; }
 
         //COSTRUTTORI
-        public Progetto(long id, string tipologia, long idAzienda)
+        public Progetto(long id, string tipologia, long aziendaId)
         {
             Id = id;
             Tipologia = tipologia;
-            IdAzienda = idAzienda;
+            AziendaId = aziendaId;
         }
 
         public Progetto()
         {
+
+        }
+
+        //METODO Override per stampare i dati nella classe
+        public override string ToString()
+        {
+            return $"id: {Id} Tipologia: {Tipologia}";
 
         }
     }

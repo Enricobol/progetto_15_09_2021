@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Scuola.Extensions;
+using Scuola.Entities;
 using Scuola.Entities.Exceptions;
 using Scuola.Model.Data.Exceptions;
 
@@ -62,9 +63,9 @@ namespace Scuola.Model.Data
                     cmd.Parameters["@descrizione"].Value = c.Descrizione;
                     cmd.Parameters["@ammontareOre"].Value = c.AmmontareOre;
                     cmd.Parameters["@costoRiferimento"].Value = c.CostoRiferimento;
-                    cmd.Parameters["@idLivello"].Value = c.IdLivello;
-                    cmd.Parameters["@idProgetto"].Value = c.IdProgetto;
-                    cmd.Parameters["@idCategoria"].Value = c.IdCategoria;
+                    cmd.Parameters["@idLivello"].Value = c.LivelloId;
+                    cmd.Parameters["@idProgetto"].Value = c.ProgettoId;
+                    cmd.Parameters["@idCategoria"].Value = c.CategoriaId;
 
                     //cmd.ExecuteNonQuery();
                     c.Id = (long)cmd.ExecuteScalar(); //Ritrona l'id del corso appena inserito
@@ -103,9 +104,9 @@ namespace Scuola.Model.Data
                                 descrizione: reader.GetString("descrizione"),
                                 ammontareOre: reader.GetInt32("ammontareOre"),
                                 costoRiferimento: (decimal)reader.GetInt32("costoRiferimento"),
-                                idLivello: reader.GetInt32("idLivello"),
-                                idProgetto: reader.GetInt32("idProgetto"),
-                                idCategoria: reader.GetInt32("idCategoria")
+                                livelloId: reader.GetInt32("idLivello"),
+                                progettoId: reader.GetInt32("idProgetto"),
+                                categoriaId: reader.GetInt32("idCategoria")
                                 );
                             return c;
                         }
@@ -143,9 +144,9 @@ namespace Scuola.Model.Data
                                 descrizione: reader.GetString("descrizione"),
                                 ammontareOre: reader.GetInt32("ammontareOre"),
                                 costoRiferimento: reader.GetDecimal("costoRiferimento"),
-                                idLivello: reader.GetInt32("idLivello"),
-                                idProgetto: reader.GetInt32("idProgetto"),
-                                idCategoria: reader.GetInt32("idCategoria")
+                                livelloId: reader.GetInt32("idLivello"),
+                                progettoId: reader.GetInt32("idProgetto"),
+                                categoriaId: reader.GetInt32("idCategoria")
                                 );
                             cs.Add(c);
                         }
@@ -195,9 +196,9 @@ namespace Scuola.Model.Data
                     cmd.Parameters["@newDescrizione"].Value = c.Descrizione;
                     cmd.Parameters["@newAmmontareOre"].Value = c.AmmontareOre;
                     cmd.Parameters["@newCostoRiferimento"].Value = c.CostoRiferimento;
-                    cmd.Parameters["@newIdLivello"].Value = c.IdLivello;
-                    cmd.Parameters["@newIdProgetto"].Value = c.IdProgetto;
-                    cmd.Parameters["@newIdCategoria"].Value = c.IdCategoria;
+                    cmd.Parameters["@newIdLivello"].Value = c.LivelloId;
+                    cmd.Parameters["@newIdProgetto"].Value = c.ProgettoId;
+                    cmd.Parameters["@newIdCategoria"].Value = c.CategoriaId;
 
                     cmd.ExecuteNonQuery();
                     return cVecchio;
@@ -239,9 +240,9 @@ namespace Scuola.Model.Data
                             minNumStudenti: reader.GetInt32("minNumStudenti"),
                             maxNumStudenti: reader.GetInt32("maxNumStudenti"),
                             inPresenze: reader.GetBoolean("inPresenze"),
-                            idAula: reader.GetInt32("idAula"),
-                            idEnteFinanziante: reader.GetInt32("idEntiFinanzianti"),
-                            idCorso: reader.GetInt32("idCorso")
+                            aulaId: reader.GetInt32("idAula"),
+                            enteFinanzianteId: reader.GetInt32("idEntiFinanzianti"),
+                            corsoId: reader.GetInt32("idCorso")
                         );
                             eds.Add(ed);
                         }
@@ -277,9 +278,9 @@ namespace Scuola.Model.Data
                     cmd.Parameters["@minNumStudenti"].Value = ec.MinNumStudenti;
                     cmd.Parameters["@maxNumStudenti"].Value = ec.MaxNumStudenti;
                     cmd.Parameters["@inPresenze"].Value = ec.InPresenze;
-                    cmd.Parameters["@idAula"].Value = ec.IdAula;
-                    cmd.Parameters["@idEntiFinanzianti"].Value = ec.IdEnteFinanziante;
-                    cmd.Parameters["@idCorso"].Value = ec.IdCorso;
+                    cmd.Parameters["@idAula"].Value = ec.AulaId;
+                    cmd.Parameters["@idEntiFinanzianti"].Value = ec.EnteFinanzianteId;
+                    cmd.Parameters["@idCorso"].Value = ec.CorsoId;
 
                     //cmd.ExecuteNonQuery();
                     ec.Id = (long)cmd.ExecuteScalar(); //Ritrona l'id del corso appena inserito

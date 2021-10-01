@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq; // Una libreria speciale! per cercare dentro un IEnumerable con una LAMBDA
+using Scuola.Entities;
 
 namespace Scuola.Model.Data
 {

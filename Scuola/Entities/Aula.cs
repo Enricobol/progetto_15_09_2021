@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scuola.Model
+namespace Scuola.Entities
 {
     public class Aula
     {
@@ -30,6 +30,12 @@ namespace Scuola.Model
         public Aula()
         {
 
+        }
+
+        //METODO Override per stampare i dati nella classe
+        public override string ToString() 
+        {
+            return $"id: {Id} Nome: {Nome} Massimo numero studenti: {CapMax} In presenza: {IsFisica}  Computerizzata: {IsComputerizzata} Proiettore: {HaProiettore}";
         }
 
     }

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "progetto_15_09_2021", "prog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scuola", "Scuola\Scuola.csproj", "{0ECBE47B-969E-4CC6-8492-8C2E30896AF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionProject", "ExceptionProject\ExceptionProject.csproj", "{28784AD5-1D9F-441F-A99A-396E47B37899}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionEsempi", "ExceptionProject\ExceptionEsempi.csproj", "{28784AD5-1D9F-441F-A99A-396E47B37899}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
