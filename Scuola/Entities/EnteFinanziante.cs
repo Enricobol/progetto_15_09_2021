@@ -12,6 +12,10 @@ namespace Scuola.Entities
         public long Id { get; set; }
         public string Titolo { get; set; }
         public string Descrizione { get; set; }
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<EdizioneCorso> EdizioniCorso { get; set; } = new List<EdizioneCorso>(); //Un ente può finanziare più corsi
+
+
 
         //COSTRUTTORI
         public EnteFinanziante(long id, string titolo, string descrizione)

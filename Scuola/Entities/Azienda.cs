@@ -16,6 +16,11 @@ namespace Scuola.Entities
         public string CodicePostale { get; set; }
         public string Email { get; set; }
         public string PartitaIva { get; set; }
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<Persona> Persone { get; set; } = new List<Persona>(); //Un'azienda può avere più persone
+        public virtual List<Progetto> Progetti { get; set; } = new List<Progetto>(); //Un'azienda può avere progetti
+
+
 
         //COSTRUTTORI
         public Azienda(long id, string nome, string indirizzo, string citta, string codicePostale, string email, string partitaIva)

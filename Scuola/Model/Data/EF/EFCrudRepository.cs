@@ -22,16 +22,21 @@ namespace Scuola.Model.Data.EF
 
 
             //METODI
-            public T Create(T newElement)
+            public IEnumerable<T> GetAll() //Metodo per recuperare tutte le entità in una determinata classe.
+            {
+                return entities.AsEnumerable();
+            }
+
+            public T Create(T newElement) //Crea un nuovo elemento, ritornalo per conferma
             {
                 entities.Add(newElement);
                 ctx.SaveChanges();
                 return newElement;
             }
 
-            public T Delete(K id) //Elimino elemento di classe per id
+            public T Delete(K key) //Elimino elemento di classe per id
             {
-                T found = entities.Find(id);
+                T found = entities.Find(key);
                 if (found == null)//Controllo so trovato qualcosa
                 {
                     return null;
@@ -52,14 +57,9 @@ namespace Scuola.Model.Data.EF
                 return element;
             }
 
-            public T FindById(K id) //Trova un'entità di una determinata classe per id.
+            public T FindById(K key) //Trova un'entità di una determinata classe per id.
             {
-                return entities.Find(id);
-            }
-
-            public IEnumerable<T> GetAll() //Metodo per recuperare tutte le entità in una determinata classe.
-            {
-                return entities.AsEnumerable();
+                return entities.Find(key);
             }
 
             public void Update(T newElement) //Metodo per aggiornare l'entità in una determinata classe.

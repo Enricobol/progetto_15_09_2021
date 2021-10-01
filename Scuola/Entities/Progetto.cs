@@ -10,17 +10,20 @@ namespace Scuola.Entities
     {
         //PROPRIETA'
         public long Id { get; set; }
-        public string Tipologia { get; set; }
-        //PROPRIETA' FOREING KEYS
+        public string Titolo { get; set; }
+        //PROPRIETA' DI TIPO ASSOCIAZIONE
         public long AziendaId { get; set; }
-        //PROPRIETA' CLASSI
         public Azienda Azienda { get; set; }
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<Corso> Corsi { get; set; } = new List<Corso>(); //Un progetto può avere multipli corsi
+
+
 
         //COSTRUTTORI
-        public Progetto(long id, string tipologia, long aziendaId)
+        public Progetto(long id, string titolo, long aziendaId)
         {
             Id = id;
-            Tipologia = tipologia;
+            Titolo = titolo;
             AziendaId = aziendaId;
         }
 
@@ -32,7 +35,7 @@ namespace Scuola.Entities
         //METODO Override per stampare i dati nella classe
         public override string ToString()
         {
-            return $"id: {Id} Tipologia: {Tipologia}";
+            return $"id: {Id} Titolo: {Titolo}";
 
         }
     }

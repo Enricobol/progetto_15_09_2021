@@ -11,11 +11,10 @@ namespace Scuola.Entities
         // PROPRIETA'
         public long Id { get; set; }
         public string Note { get; set; }
-        //PROPRIETA' FOREING KEYS
+        //PROPRIETA' DI TIPO ASSOCIAZIONE
         public long PersonaId { get; set; }
         public long SkillId { get; set; }
         public long LivelloId { get; set; }
-        //PROPRIETA' CLASSI
         public Persona Persona { get; set; }
         public Skill Skill { get; set; }
         public Livello Livello { get; set; }

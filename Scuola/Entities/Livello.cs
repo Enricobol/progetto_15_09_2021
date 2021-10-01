@@ -12,6 +12,11 @@ namespace Scuola.Entities
         public long Id { get; set; }
         public string Tipologia { get; set; }
         public string Descrizione { get; set; }
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<Competenza> Competenze { get; set; } = new List<Competenza>(); //Un Livello può avere multiple competenze 
+        public virtual List<Corso> Corsi { get; set; } = new List<Corso>(); //Un Livello può avere multipli corsi 
+
+
 
         //COSTRUTTORI
         public Livello(long id, string tipologia, string descrizione)

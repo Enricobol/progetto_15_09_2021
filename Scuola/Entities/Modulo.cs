@@ -13,12 +13,15 @@ namespace Scuola.Entities
         public string Nome { get; set; }
         public int NumeroOre { get; set; }
         public string Descrizione { get; set; }
-        //PROPRIETA' FOREING KEYS
+        //PROPRIETA' DI TIPO ASSOCIAZIONE
         public long PersonaId { get; set; }
         public long EdizioneId { get; set; }
-        //PROPRIETA' CLASSI
         public Persona Persona { get; set; }
         public EdizioneCorso Edizione { get; set; }
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<Lezione> Lezioni { get; set; } = new List<Lezione>(); //Un modulo può avere multiple lezioni 
+
+
 
         //COSTRUTTORI
         public Modulo(long id, string nome, int numeroOre , string descrizione , long personaId , long edizioneId)

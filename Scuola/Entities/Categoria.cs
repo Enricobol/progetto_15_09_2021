@@ -12,6 +12,9 @@ namespace Scuola.Entities
         public long Id { get; set; }
         public string Tipo { get; set; }
         public string Descrizione { get; set; }
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<Corso> Corsi { get; set; } = new List<Corso>(); //Una categoria può avere più corsi a lei associata
+
 
         //COSTRUTTORI
         public Categoria(long id, string tipo, string descrizione)

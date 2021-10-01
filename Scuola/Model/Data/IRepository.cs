@@ -7,10 +7,8 @@ using Scuola.Entities;
 
 namespace Scuola.Model.Data
 {
-    public interface IRepository
+    public interface IRepository //L'interfaccia principale
     {
-       
-  
         IEnumerable<Corso> GetCourses();
         Corso FindCourseById(long id);
         Corso UpdateCourse(Corso corso);

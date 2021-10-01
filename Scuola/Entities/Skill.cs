@@ -12,7 +12,8 @@ namespace Scuola.Entities
         public long Id { get; set; }
         public string Tipo { get; set; }
         public string Descrizione { get; set; }
-
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<Competenza> Competenze { get; set; } = new List<Competenza>(); //Una skill può avere multiple competenze
 
 
         //COSTRUTTORI

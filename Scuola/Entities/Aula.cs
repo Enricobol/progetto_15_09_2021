@@ -13,11 +13,15 @@ namespace Scuola.Entities
         public string Nome { get; set; }
         public int CapMax { get; set; }
         public bool IsFisica { get; set; }
-        public bool IsComputerizzata { get; set; }
+        public bool? IsComputerizzata { get; set; }
         public bool? HaProiettore { get; set; }
-
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<EdizioneCorso> EdizioniCorso { get; set; } = new List<EdizioneCorso>(); //Un'aula può avere più edizioni di un corso
+        public virtual List<Lezione> Lezioni { get; set; } = new List<Lezione>(); //Un'aula può avere più lezioni
+        
+        
         //COSTRUTTORI
-        public Aula(long id, string nome, int capMax, bool isFisica, bool isComputerizzata, bool? haProiettore)
+        public Aula(long id, string nome, int capMax, bool isFisica, bool? isComputerizzata, bool? haProiettore)
         {
             Id = id;
             Nome = nome;

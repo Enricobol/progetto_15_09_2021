@@ -12,11 +12,23 @@ namespace Scuola.Model.Data.EF
     public class EducationContext : DbContext
     {
         //PROPRIETA'
-        public virtual DbSet<Persona> Persone { get; set; }
-        public virtual DbSet<Corso> Corsi { get; set; }
         public virtual DbSet<Aula> Aule { get; set; }
+        public virtual DbSet<Azienda> Aziende { get; set; }
+        public virtual DbSet<Categoria> Categorie { get; set; }
+        public virtual DbSet<Competenza> Competenze { get; set; }
+        public virtual DbSet<Corso> Corsi { get; set; }
 
-        metti tutti i dbsets!
+        public virtual DbSet<EdizioneCorso> EdizioniCorsi { get; set; }
+        public virtual DbSet<EnteFinanziante> EntiFinanzianti { get; set; }
+        public virtual DbSet<Iscrizione> Iscrizioni { get; set; }
+        public virtual DbSet<Lezione> Lezioni { get; set; }
+        public virtual DbSet<Livello> Livelli { get; set; }
+
+        public virtual DbSet<Modulo> Moduli { get; set; }
+        public virtual DbSet<Persona> Persone { get; set; }
+        public virtual DbSet<Presenza> Presenze { get; set; }
+        public virtual DbSet<Progetto> Progetti { get; set; }
+        public virtual DbSet<Skill> Skills { get; set; }
 
         //EFFETTUIAMO L'OVERRIDE
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

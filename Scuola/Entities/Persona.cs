@@ -20,10 +20,17 @@ namespace Scuola.Entities
         public string Telefono { get; set; }
         public string Ruolo { get; set; }
         public string PartitaIva { get; set; }
-        //PROPRIETA' FOREING KEYS
+        //PROPRIETA' DI TIPO ASSOCIAZIONE
         public long AziendaId { get; set; }
-        //PROPRIETA' CLASSI
         public Azienda Azienda { get; set; }
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<Competenza> Competenze { get; set; } = new List<Competenza>(); //Una persona può avere 0 o multiple competenze (insegnante) 
+        public virtual List<Iscrizione> Iscrizioni { get; set; } = new List<Iscrizione>(); //Una persona può avere 0 o multiple iscrizioni (studente) 
+        public virtual List<Lezione> Lezioni { get; set; } = new List<Lezione>(); //Una persona può avere 0 o multiple lezioni (insegnante) 
+        public virtual List<Modulo> Moduli { get; set; } = new List<Modulo>(); //Una persona può avere 0 o multiple moduli (insegnante) 
+        public virtual List<Presenza> Presenze { get; set; } = new List<Presenza>(); //Una persona può avere 0 o multiple presenze (studente) 
+
+
 
         //COSTRUTTORI
         public Persona(long id , string nome, string cognome, DateTime dataDiNascita, string cf, string sesso, string cittàResidenza, string email , string telefono , string ruolo, string partitaIva)

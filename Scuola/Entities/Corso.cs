@@ -15,15 +15,16 @@ namespace Scuola.Entities
         public string Descrizione { get; set; }
         public int AmmontareOre { get; set; }
         public decimal CostoRiferimento { get; set; }
-        //PROPRIETA' FOREING KEYS
+        //PROPRIETA' DI TIPO ASSOCIAZIONE
         public long LivelloId { get; set; }
         public long ProgettoId { get; set; }
         public long CategoriaId { get; set; }
-        //PROPRIETA' CLASSI
         public Livello Livello { get; set; }
         public Progetto Progetto { get; set; }
         public Categoria Categoria { get; set; }
-        //public ExperienceLevel EntryLevel { get; set; }
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<EdizioneCorso> EdizioniCorso { get; set; } = new List<EdizioneCorso>(); //Un corso può avere più edizioni corso
+
 
 
 
@@ -60,8 +61,10 @@ namespace Scuola.Entities
         {
             return (int)Id;
         }
-
+        
     }
+
+    //public ExperienceLevel EntryLevel { get; set; }
     //public enum ExperienceLevel
     //{
     //    PRINCIPIANTE, MEDIO, ESPERTO, GURU

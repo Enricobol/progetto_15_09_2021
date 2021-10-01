@@ -13,12 +13,12 @@ namespace Scuola.Entities
         public DateTime Inizio { get; set; }
         public DateTime Fine { get; set; }
         public string Nota { get; set; }
-        //PROPRIETA' FOREING KEYS
+        //PROPRIETA' DI TIPO ASSOCIAZIONE
         public long PersonaId { get; set; }
         public long LezioneId { get; set; }
-        //PROPRIETA' CLASSI
         public Persona Persona { get; set; }
         public Lezione Lezione { get; set; }
+
 
         //COSTRUTTORI
         public Presenza(long id, DateTime inizio, DateTime fine, string nota, long personaId, long lezioneId)

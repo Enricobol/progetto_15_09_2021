@@ -20,17 +20,18 @@ namespace Scuola.Entities
         public int MinNumStudenti { get; set; }
         public int MaxNumStudenti { get; set; }
         public bool InPresenze { get; set; }
-
-        //PROPRIETA' FOREING KEYS
+        //PROPRIETA' DI TIPO ASSOCIAZIONE
         public int AulaId { get; set; }
         public int EnteFinanzianteId { get; set; }
         public int CorsoId { get; set; }
-        //PROPRIETA' CLASSI
         public EnteFinanziante EnteFinanziante { get; set; }
         public Aula Aula { get; set; }
         public Corso Corso { get; set; }
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<Iscrizione> Iscrizioni { get; set; } = new List<Iscrizione>(); //Un'edizione corso può avere multiple iscrizioni 
+        public virtual List<Modulo> Moduli { get; set; } = new List<Modulo>(); //Un'edizione corso può avere multipli moduli 
 
-        //private AddStudents ad; //Creo un delegato di classe AddStudents
+
 
         //COSTRUTTORE
         public EdizioneCorso(long id, int codiceEdizione, LocalDate dataInizio, LocalDate dataFine, decimal prezzoFinale, int minNumStudenti, int maxNumStudenti, 
@@ -75,8 +76,9 @@ namespace Scuola.Entities
         #endregion
 
     }
-
+           
     //DELEGATI
+    //private AddStudents ad; //Creo un delegato di classe AddStudents
     //public delegate int AddStudents(); //Posso puntare tutte le funzioni che ritornano un int e non prendono nulla  ----> FUNC
     //public delegate void EnrollStudents(int x); // "" "" "" non ritornano nulla ma richiedono un int
 }

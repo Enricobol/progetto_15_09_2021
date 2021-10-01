@@ -13,15 +13,16 @@ namespace Scuola.Entities
         public DateTime Inizio { get; set; }
         public DateTime Fine { get; set; }
         public string Descrizione { get; set; }
-
-        //PROPRIETA' FOREING KEYS
+        //PROPRIETA' DI TIPO ASSOCIAZIONE
         public long AulaId { get; set; }
         public long PersonaId { get; set; }
         public long ModuloId { get; set; }
-        //PROPRIETA' CLASSI
         public Aula Aula { get; set; }
         public Persona Persona { get; set; }
         public Modulo Modulo { get; set; }
+        //PROPRIETA' DI TIPO CONTENITORE
+        public virtual List<Presenza> Presenze { get; set; } = new List<Presenza>(); //Una lezione può avere più presenze
+
 
         //COSTRUTTORI
         public Lezione(long id, DateTime inizio, DateTime fine, string descrizione, long aulaId, long personaId, long moduloId)
