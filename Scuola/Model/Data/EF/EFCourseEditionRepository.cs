@@ -9,7 +9,7 @@ using Scuola.Entities;
 
 namespace Scuola.Model.Data.EF
 {
-    public class EFCourseEditionRepository : CrudRepository<EdizioneCorso,long> , ICourseEditionRepository
+    public class EFCourseEditionRepository : ICrudRepository<T, K> 
     {
     }
 }

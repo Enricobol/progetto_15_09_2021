@@ -3,39 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Scuola.Entities;
 
 namespace Scuola.Model.Data.InMemory
 {
-    class InMemoryCourseEditionRepository : ICrudRepository<EdizioneCorso, long>
+    public class InMemoryCrudRepository<T, K> : ICrudRepository<T, K> where T : class //Una sola repository dove il tipo viene lasciato flessibile così può gestire tutti i tipi di classi.
     {
-
-        public IEnumerable<EdizioneCorso> GetAll()
+        public T Create(T newElement)
         {
             throw new NotImplementedException();
         }
 
-        public EdizioneCorso Create(EdizioneCorso newElement)
+        public bool Delete(K key)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(long key)
+        public bool Delete(T newElement)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(EdizioneCorso newElement)
+        public T FindById(K key)
         {
             throw new NotImplementedException();
         }
 
-        public EdizioneCorso FindById(long key)
+        public IEnumerable<T> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(EdizioneCorso newElement)
+        public bool Update(T newElement)
         {
             throw new NotImplementedException();
         }

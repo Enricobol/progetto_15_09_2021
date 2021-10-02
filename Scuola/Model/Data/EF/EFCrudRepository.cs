@@ -7,66 +7,63 @@ using System.Threading.Tasks;
 
 namespace Scuola.Model.Data.EF
 {
-    public class EFCrudRepository
+    public class CrudRepository<T, K> : ICrudRepository<T, K> where T : class //Una sola repository dove il tipo viene lasciato flessibile così può gestire tutti i tipi di classi.
     {
-        public class CrudRepository<T, K> : ICrudRepository<T, K> where T : class //Una sola repository dove il tipo viene lasciato flessibile così può gestire tutti i tipi di classi.
+        private readonly EducationContext ctx;
+        private DbSet<T> entities;
+
+        public CrudRepository(EducationContext ctx)
         {
-            private readonly EducationContext ctx;
-            private DbSet<T> entities;
+            this.ctx = ctx;
+            this.entities = ctx.Set<T>();
+        }
 
-            public CrudRepository(EducationContext ctx)
+
+        //METODI
+        public IEnumerable<T> GetAll() //Metodo per recuperare tutte le entità in una determinata classe.
+        {
+            return entities.AsEnumerable();
+        }
+
+        public T Create(T newElement) //Crea un nuovo elemento, ritornalo per conferma
+        {
+            entities.Add(newElement);
+            ctx.SaveChanges();
+            return newElement;
+        }
+
+        public bool Delete(K key) //Elimino elemento di classe per id
+        {
+            T found = entities.Find(key);
+            if (found == null)//Controllo so trovato qualcosa
             {
-                this.ctx = ctx;
-                this.entities = ctx.Set<T>();
+                return null;
             }
+            entities.Remove(found);
+            ctx.SaveChanges();
+            return found;
+        }
 
-
-            //METODI
-            public IEnumerable<T> GetAll() //Metodo per recuperare tutte le entità in una determinata classe.
+        public bool Delete(T element) //Elimino elemento di classe cercando proprio l'elemento
+        {
+            entities.Remove(element);
+            int changes = ctx.SaveChanges();
+            if (changes == 0)//Controllo so ho eliminato qualcosa
             {
-                return entities.AsEnumerable();
+                return null;
             }
+            return element;
+        }
 
-            public T Create(T newElement) //Crea un nuovo elemento, ritornalo per conferma
-            {
-                entities.Add(newElement);
-                ctx.SaveChanges();
-                return newElement;
-            }
+        public T FindById(K key) //Trova un'entità di una determinata classe per id.
+        {
+            return entities.Find(key);
+        }
 
-            public T Delete(K key) //Elimino elemento di classe per id
-            {
-                T found = entities.Find(key);
-                if (found == null)//Controllo so trovato qualcosa
-                {
-                    return null;
-                }
-                entities.Remove(found);
-                ctx.SaveChanges();
-                return found;
-            }
-
-            public T Delete(T element) //Elimino elemento di classe cercando proprio l'elemento
-            {
-                entities.Remove(element);
-                int changes = ctx.SaveChanges();
-                if (changes == 0)//Controllo so ho eliminato qualcosa
-                {
-                    return null;
-                }
-                return element;
-            }
-
-            public T FindById(K key) //Trova un'entità di una determinata classe per id.
-            {
-                return entities.Find(key);
-            }
-
-            public void Update(T newElement) //Metodo per aggiornare l'entità in una determinata classe.
-            {
-                entities.Update(newElement);
-                ctx.SaveChanges();
-            }
+        public void Update(T newElement) //Metodo per aggiornare l'entità in una determinata classe.
+        {
+            entities.Update(newElement);
+            ctx.SaveChanges();
         }
     }
 }

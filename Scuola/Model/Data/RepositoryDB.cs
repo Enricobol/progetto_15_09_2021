@@ -297,7 +297,6 @@ namespace Scuola.Model.Data
             }
         }
 
-
         public Corso BetterFindCourseById(long id)
         {
             throw new NotImplementedException();

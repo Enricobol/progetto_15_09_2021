@@ -10,10 +10,10 @@ namespace Scuola.Model.Data
     {
         IEnumerable<T> GetAll();
         T Create(T newElement);
-        T Delete(K key);
-        T Delete(T newElement);
+        bool Delete(K key);
+        bool Delete(T newElement);
         T FindById(K key);
-        void Update(T newElement);
+        bool Update(T newElement);
 
     }
 }

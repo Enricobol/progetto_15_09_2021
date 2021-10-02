@@ -9,16 +9,18 @@ namespace Scuola.Model.Data.InMemory
 {
     public class InMemoryCourseRepository : ICrudRepository<Corso, long>
     {
-        private static List<Corso> corsi = new List<Corso>();
+        private static ISet<Corso> corsi = new HashSet<Corso>();
         static long lastIdCourse = 0;
-        public void Create(Corso newElement)
-        {
 
+        public IEnumerable<Corso> GetAll()
+        {
+            return corsi;
         }
 
-        public bool Delete(Corso newElement)
+        public Corso Create(Corso newElement)
         {
-            return Delete(newElement.Id);
+            bool added = corsi.Add(newElement);
+            return added ? newElement : null;
         }
 
         public bool Delete(long key)
@@ -28,14 +30,14 @@ namespace Scuola.Model.Data.InMemory
             return corsi.Count != count;
         }
 
+        public bool Delete(Corso newElement)
+        {
+            return Delete(newElement.Id);
+        }
+
         public Corso FindById(long key)
         {
             throw new NotImplementedException();
-        }
-
-        public IEnumerable<Corso> GetAll()
-        {
-            return corsi;
         }
 
         public bool Update(Corso newElement)

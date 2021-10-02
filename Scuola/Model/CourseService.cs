@@ -11,7 +11,8 @@ namespace Scuola.Model
     public class CourseService
     {
         //PROPRIETA'
-        public IRepository Repository { get; private set; }
+        public ICrudRepository<T, K> CorsoRepository { get; private set; }
+ 
 
         //COSTRUTTORE
         public CourseService(IRepository repo)

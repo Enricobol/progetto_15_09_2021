@@ -9,17 +9,21 @@ namespace Scuola.Model.Data.ADO
 {
     public class ADOCourseRepository : ICourseRepository
     {
-        public void Create(Corso newElement)
+        public IEnumerable<Corso> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(Corso newElement)
+        public Corso Create(Corso newElement)
         {
             throw new NotImplementedException();
         }
 
         public bool Delete(long key)
+        {
+            throw new NotImplementedException();
+        }
+        public bool Delete(Corso newElement)
         {
             throw new NotImplementedException();
         }
@@ -30,11 +34,6 @@ namespace Scuola.Model.Data.ADO
         }
 
         public IEnumerable<Corso> FindByTitleLike(string part)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Corso> GetAll()
         {
             throw new NotImplementedException();
         }
