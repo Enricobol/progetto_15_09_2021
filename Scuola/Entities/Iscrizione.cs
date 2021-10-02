@@ -23,7 +23,7 @@ namespace Scuola.Entities
 
 
         //COSTRUTTORI
-        public Iscrizione(long id, DateTime dataIscrizioni, string valutazioneCorsi ,int votoCorsi, int valutazioneStudente, bool pagata)
+        public Iscrizione(long id, DateTime dataIscrizioni, string valutazioneCorsi, int votoCorsi, int valutazioneStudente, bool pagata)
         {
             Id = id;
             DataIscrizioni = dataIscrizioni;
@@ -31,8 +31,8 @@ namespace Scuola.Entities
             VotoCorsi = votoCorsi;
             ValutazioneStudente = valutazioneStudente;
             Pagata = pagata;
-    }
-
+        }
+        //COSTRUTTORE VUOTO
         public Iscrizione()
         {
 

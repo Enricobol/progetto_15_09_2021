@@ -47,7 +47,7 @@ namespace Scuola.Entities
             Ruolo = ruolo;
             PartitaIva = partitaIva;
         }
-
+        //COSTRUTTORE VUOTO
         public Persona()
         {
 

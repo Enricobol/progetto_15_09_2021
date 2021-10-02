@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Scuola.Model.Data.EF
 {
-    public class CrudRepository<T, K> : ICrudRepository<T, K> where T : class //Una sola repository dove il tipo viene lasciato flessibile così può gestire tutti i tipi di classi.
+    public class EFCrudRepository<T, K> : ICrudRepository<T, K> where T : class //Una sola repository dove il tipo viene lasciato flessibile così può gestire tutti i tipi di classi.
     {
         private readonly EducationContext ctx;
         private DbSet<T> entities;
 
-        public CrudRepository(EducationContext ctx)
+        public EFCrudRepository(EducationContext ctx)
         {
             this.ctx = ctx;
             this.entities = ctx.Set<T>();
@@ -37,22 +37,22 @@ namespace Scuola.Model.Data.EF
             T found = entities.Find(key);
             if (found == null)//Controllo so trovato qualcosa
             {
-                return null;
+                return false;
             }
             entities.Remove(found);
             ctx.SaveChanges();
-            return found;
+            return true;
         }
 
-        public bool Delete(T element) //Elimino elemento di classe cercando proprio l'elemento
+        public bool Delete(T newElement) //Elimino elemento di classe cercando proprio l'elemento
         {
-            entities.Remove(element);
+            entities.Remove(newElement);
             int changes = ctx.SaveChanges();
             if (changes == 0)//Controllo so ho eliminato qualcosa
             {
-                return null;
+                return false;
             }
-            return element;
+            return true;
         }
 
         public T FindById(K key) //Trova un'entità di una determinata classe per id.
@@ -60,10 +60,12 @@ namespace Scuola.Model.Data.EF
             return entities.Find(key);
         }
 
-        public void Update(T newElement) //Metodo per aggiornare l'entità in una determinata classe.
+        public bool Update(T newElement) //Metodo per aggiornare l'entità in una determinata classe.
         {
+            
             entities.Update(newElement);
             ctx.SaveChanges();
+            return true;
         }
     }
 }

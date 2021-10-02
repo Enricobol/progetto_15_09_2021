@@ -15,26 +15,26 @@ namespace Scuola.Entities
         public string Descrizione { get; set; }
         //PROPRIETA' DI TIPO ASSOCIAZIONE
         public long PersonaId { get; set; }
-        public long EdizioneId { get; set; }
+        public long EdizioneCorsoId { get; set; }
         public Persona Persona { get; set; }
-        public EdizioneCorso Edizione { get; set; }
+        public EdizioneCorso EdizioneCorso { get; set; }
         //PROPRIETA' DI TIPO CONTENITORE
         public virtual List<Lezione> Lezioni { get; set; } = new List<Lezione>(); //Un modulo può avere multiple lezioni 
 
 
 
         //COSTRUTTORI
-        public Modulo(long id, string nome, int numeroOre , string descrizione , long personaId , long edizioneId)
+        public Modulo(long id, string nome, int numeroOre , string descrizione , long personaId , long edizioneCorsoId)
         {
             Id = id;
             Nome = nome;
             NumeroOre = numeroOre;
             Descrizione = descrizione;
             PersonaId = personaId;
-            EdizioneId = edizioneId;
+            EdizioneCorsoId = edizioneCorsoId;
 
         }
-
+        //COSTRUTTORE VUOTO
         public Modulo()
         {
 

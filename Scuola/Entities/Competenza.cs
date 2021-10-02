@@ -20,7 +20,6 @@ namespace Scuola.Entities
         public Livello Livello { get; set; }
 
 
-
         //COSTRUTTORI
         public Competenza(long id, string note, long personaId, long skillId, long livelloId)
         {
@@ -30,7 +29,7 @@ namespace Scuola.Entities
             SkillId = skillId;
             LivelloId = livelloId;
         }
-
+        //COSTRUTTORE VUOTO
         public Competenza()
         {
 

@@ -26,7 +26,7 @@ namespace Scuola.Model.Data
             #region MyRegion VECCHIA CREAZIONE DATI
             //Popolo con dei corsi ed edizioni per vedere se funziona
             //long id, string titolo, string descrizione, int ammontareOre, decimal costoRiferimento, int idLivello, int idProgetto, int idCategoria
-            Corso c1 = new Corso(345, "MateFagoilatica","Addizioni e sottrazioni legumari", 50, 500.50m, 1 , 1 , 1);
+            Corso c1 = new Corso(345, "MateFagoilatica", "Addizioni e sottrazioni legumari", 50, 500.50m, 1, 1, 1);
             courses.Add(c1);
             Corso c2 = new Corso(678, "AncheIProgrammMangianoFagiol", "Impara a mangiare i fagioli", 999, 0.50m, 1, 2, 2);
             courses.Add(c2);
@@ -50,8 +50,8 @@ namespace Scuola.Model.Data
 
         }
 
-        
-           
+
+
         #region METODO AddCourse : Aggiunge un corso nella lista, a meno che non sia già dentro, ritrona il corso come flag.
         public Corso AddCourse(Corso corso)
         {
@@ -81,7 +81,7 @@ namespace Scuola.Model.Data
                 if ((int)ed.Corso.Id == (int)courseId) //Dobbiamo cercare per ogni: EdizioneCorso->Corso->ID = courseId
                 {
                     editions.Add(ed); //Ficco nella lista che ritornerò il corso con l'Id
-                    
+
                 }
             }
             return editions;

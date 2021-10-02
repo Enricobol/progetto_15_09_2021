@@ -33,7 +33,7 @@ namespace Scuola.Entities
             Email = email;
             PartitaIva = partitaIva;
         }
-
+        //COSTRUTTORE VUOTO
         public Azienda()
         {
 

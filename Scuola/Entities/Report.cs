@@ -28,6 +28,7 @@ namespace Scuola.Entities
             NumMaxStudents = numMaxStudents;
             NumMinStudents = numMinStudents;
         }
+        //COSTRUTTORE VUOTO
         public Report()
         {
 

@@ -1,20 +1,15 @@
-﻿using System;
+﻿using Scuola.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Scuola.Entities;
 
-namespace Scuola.Model.Data.ADO
+namespace Scuola.Model.Data.InMemory
 {
-    public class ADOCourseRepository : ICourseRepository
+    class InMemoryEdizioneCorsoRepository : ICrudRepository<EdizioneCorso, long>
     {
-        public IEnumerable<Corso> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Corso Create(Corso newElement)
+        public EdizioneCorso Create(EdizioneCorso newElement)
         {
             throw new NotImplementedException();
         }
@@ -23,22 +18,23 @@ namespace Scuola.Model.Data.ADO
         {
             throw new NotImplementedException();
         }
-        public bool Delete(Corso newElement)
+
+        public bool Delete(EdizioneCorso newElement)
         {
             throw new NotImplementedException();
         }
 
-        public Corso FindById(long key)
+        public EdizioneCorso FindById(long key)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Corso> FindByTitleLike(string part)
+        public IEnumerable<EdizioneCorso> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Corso newElement)
+        public bool Update(EdizioneCorso newElement)
         {
             throw new NotImplementedException();
         }

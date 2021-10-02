@@ -7,7 +7,7 @@ using Scuola.Entities;
 
 namespace Scuola.Model.Data
 {
-    public interface ICourseRepository : ICrudRepository<Corso , long>  //METODI SPECIFICI PER CORSO
+    public interface ICorsoRepository : ICrudRepository<Corso , long>  //METODI SPECIFICI PER CORSO
     {
         IEnumerable<Corso> FindByTitleLike(string part);
     }

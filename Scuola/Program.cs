@@ -4,8 +4,9 @@ using System;
 using NodaTime;
 using System.Collections.Generic;
 using Scuola.Entities;
-using Scuola.Model.Data;
 using Scuola.Model.Data.InMemory;
+using Scuola.Model.Data.EF;
+using Microsoft.EntityFrameworkCore;
 
 namespace Scuola
 {
@@ -14,19 +15,33 @@ namespace Scuola
         static void Main(string[] args)
         {
             //METODI IN MEMORIA
-            IRepository repo = new InMemoryRepository(); //Creo una nuova reopsitry dove memorizzare Corsi ed Edizioni
-            CourseService cs = new CourseService(repo);  //Creo un servizio corsi e gli ignetto la repositry in modo che la usi
-            UserInterface ui = new UserInterface(cs);    //Creo l'interfaccia utente e gli ignetto il servizio
-
-
-            var corso1 = new Corso(1, "Matematica molto bello", "Non so cosa sia", 20, 500, 1, 1, 1);
-            ICrudRepository<Corso, long> repo2 = new InMemoryCourseRepository();
-            var coso = repo2.Create(corso1);
-
-
-
+            //IRepository repo = new InMemoryRepository(); //Creo una nuova reopsitry dove memorizzare Corsi ed Edizioni
+            //CourseService cs = new CourseService(repo);  //Creo un servizio corsi e gli ignetto la repositry in modo che la usi
+            //UserInterface ui = new UserInterface(cs);    //Creo l'interfaccia utente e gli ignetto il servizio
             //Parto con l'interfaccia
-            ui.Start();
+            //ui.Start();
+
+            using (var ctx = new EducationContext())
+            {
+                var c1 = new Corso()
+                {
+                    Titolo = "PistacChiorso",
+                    Descrizione = "I pistacchi non sono legumi!",
+                    AmmontareOre = 2,
+                    CostoRiferimento = 10,
+                    LivelloId = 1,
+                    ProgettoId = 2,
+                    CategoriaId = 1,           
+                };
+
+                EFCrudRepository<Corso, long> repoC = new EFCrudRepository<Corso, long>(ctx);
+                var s2 = repoC.Create(c1);
+                Console.ReadKey();
+                Console.WriteLine(s2.Id);
+                Console.WriteLine(c1.Id);
+                
+
+            }
 
             ////METODI ADO
             //Console.WriteLine("Prendi tutti i corsi dal Database\n");

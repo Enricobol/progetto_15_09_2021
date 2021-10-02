@@ -35,7 +35,7 @@ namespace Scuola.Entities
             PersonaId = personaId;
             ModuloId = moduloId;
         }
-
+        //COSTRUTTORE VUOTO
         public Lezione()
         {
 

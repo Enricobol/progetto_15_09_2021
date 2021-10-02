@@ -26,7 +26,7 @@ namespace Scuola.Entities
             Titolo = titolo;
             AziendaId = aziendaId;
         }
-
+        //COSTRUTTORE VUOTO
         public Progetto()
         {
 

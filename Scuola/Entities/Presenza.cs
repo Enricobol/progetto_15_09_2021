@@ -30,7 +30,7 @@ namespace Scuola.Entities
             PersonaId = personaId;
             LezioneId = lezioneId;
         }
-
+        //COSTRUTTORE VUOTO
         public Presenza()
         {
 

@@ -23,7 +23,7 @@ namespace Scuola.Entities
             Tipo = tipo;
             Descrizione = descrizione;
         }
-
+        //COSTRUTTORE VUOTO
         public Skill()
         {
 

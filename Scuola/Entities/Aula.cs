@@ -16,7 +16,7 @@ namespace Scuola.Entities
         public bool? IsComputerizzata { get; set; }
         public bool? HaProiettore { get; set; }
         //PROPRIETA' DI TIPO CONTENITORE
-        public virtual List<EdizioneCorso> EdizioniCorso { get; set; } = new List<EdizioneCorso>(); //Un'aula può avere più edizioni di un corso
+        public virtual List<EdizioneCorso> EdizioniCorsi { get; set; } = new List<EdizioneCorso>(); //Un'aula può avere più edizioni di un corso
         public virtual List<Lezione> Lezioni { get; set; } = new List<Lezione>(); //Un'aula può avere più lezioni
         
         
@@ -30,7 +30,7 @@ namespace Scuola.Entities
             IsComputerizzata = isComputerizzata;
             HaProiettore = haProiettore;
         }
-
+        //COSTRUTTORE VUOTO
         public Aula()
         {
 

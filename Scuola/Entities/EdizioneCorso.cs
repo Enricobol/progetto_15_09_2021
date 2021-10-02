@@ -21,9 +21,9 @@ namespace Scuola.Entities
         public int MaxNumStudenti { get; set; }
         public bool InPresenze { get; set; }
         //PROPRIETA' DI TIPO ASSOCIAZIONE
-        public int AulaId { get; set; }
-        public int EnteFinanzianteId { get; set; }
-        public int CorsoId { get; set; }
+        public long AulaId { get; set; }
+        public long EnteFinanzianteId { get; set; }
+        public long CorsoId { get; set; }
         public EnteFinanziante EnteFinanziante { get; set; }
         public Aula Aula { get; set; }
         public Corso Corso { get; set; }
@@ -50,6 +50,11 @@ namespace Scuola.Entities
             CorsoId = corsoId;
 
             //ad += Iscrivi; //Uso un delegato
+        }
+        //COSTRUTTORE VUOTO
+        public EdizioneCorso()
+        {
+
         }
 
 

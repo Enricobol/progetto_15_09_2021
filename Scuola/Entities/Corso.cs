@@ -23,7 +23,7 @@ namespace Scuola.Entities
         public Progetto Progetto { get; set; }
         public Categoria Categoria { get; set; }
         //PROPRIETA' DI TIPO CONTENITORE
-        public virtual List<EdizioneCorso> EdizioniCorso { get; set; } = new List<EdizioneCorso>(); //Un corso può avere più edizioni corso
+        public virtual List<EdizioneCorso> EdizioniCorsi { get; set; } = new List<EdizioneCorso>(); //Un corso può avere più edizioni corso
 
 
 
@@ -40,6 +40,12 @@ namespace Scuola.Entities
             LivelloId = livelloId;  
             ProgettoId = progettoId;
             CategoriaId = categoriaId;
+        }
+
+        //COSTRUTTORE VUOTO
+        public Corso()
+        {
+
         }
 
 

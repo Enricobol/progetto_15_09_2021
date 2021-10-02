@@ -25,7 +25,7 @@ namespace Scuola.Entities
             Tipologia = tipologia;
             Descrizione = descrizione;
         }
-
+        //COSTRUTTORE VUOTO
         public Livello()
         {
 
