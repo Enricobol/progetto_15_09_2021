@@ -5,14 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+///  Implementa i metodi comuni a tutte le entità in EF.
+/// </summary>
+
 namespace Scuola.Model.Data.EF
 {
     public class EFCrudRepository<T, K> : ICrudRepository<T, K> where T : class //Una sola repository dove il tipo viene lasciato flessibile così può gestire tutti i tipi di classi.
     {
-        private readonly EducationContext ctx;
+        private readonly ScuolaContext ctx;
         private DbSet<T> entities;
 
-        public EFCrudRepository(EducationContext ctx)
+        public EFCrudRepository(ScuolaContext ctx)
         {
             this.ctx = ctx;
             this.entities = ctx.Set<T>();

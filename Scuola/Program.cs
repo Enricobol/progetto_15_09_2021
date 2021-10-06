@@ -15,33 +15,33 @@ namespace Scuola
         static void Main(string[] args)
         {
             //METODI IN MEMORIA
-            //IRepository repo = new InMemoryRepository(); //Creo una nuova reopsitry dove memorizzare Corsi ed Edizioni
-            //CourseService cs = new CourseService(repo);  //Creo un servizio corsi e gli ignetto la repositry in modo che la usi
-            //UserInterface ui = new UserInterface(cs);    //Creo l'interfaccia utente e gli ignetto il servizio
-            //Parto con l'interfaccia
-            //ui.Start();
+            IRepository repo = new InMemoryRepository(); //Creo una nuova reopsitry dove memorizzare Corsi ed Edizioni
+            CourseService cs = new CourseService(repo);  //Creo un servizio corsi e gli ignetto la repositry in modo che la usi
+            UserInterface ui = new UserInterface(cs);    //Creo l'interfaccia utente e gli ignetto il servizio
+            //Parto con l'interfaccia utente
+            ui.Start();
 
-            using (var ctx = new EducationContext())
-            {
-                var c1 = new Corso()
-                {
-                    Titolo = "PistacChiorso",
-                    Descrizione = "I pistacchi non sono legumi!",
-                    AmmontareOre = 2,
-                    CostoRiferimento = 10,
-                    LivelloId = 1,
-                    ProgettoId = 2,
-                    CategoriaId = 1,           
-                };
+            //Metodi EntityFramework
+            //using (var ctx = new EducationContext())
+            //{
+            //    var c1 = new Corso()
+            //    {
+            //        Titolo = "Matematica",
+            //        Descrizione = "Addizioni, sottrazioni e divisioni",
+            //        AmmontareOre = 2,
+            //        CostoRiferimento = 10,
+            //        LivelloId = 1,
+            //        ProgettoId = 2,
+            //        CategoriaId = 1,           
+            //    };
 
-                EFCrudRepository<Corso, long> repoC = new EFCrudRepository<Corso, long>(ctx);
-                var s2 = repoC.Create(c1);
-                Console.ReadKey();
-                Console.WriteLine(s2.Id);
-                Console.WriteLine(c1.Id);
-                
+            //    EFCrudRepository<Corso, long> repoC = new EFCrudRepository<Corso, long>(ctx);
+            //    var s2 = repoC.Create(c1);
+            //    Console.WriteLine(s2.Id);
+            //    Console.WriteLine(c1.Id);
+            //     Console.ReadKey();               
 
-            }
+            //}
 
             ////METODI ADO
             //Console.WriteLine("Prendi tutti i corsi dal Database\n");

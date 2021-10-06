@@ -6,24 +6,42 @@ using System.Threading.Tasks;
 using System.Linq; // Una libreria speciale! per cercare dentro un IEnumerable con una LAMBDA
 using Scuola.Entities;
 
+/// <summary>
+///  Vecchia implementazione generale, va suddivisa in giro
+/// </summary>
+
+
 namespace Scuola.Model.Data
 {
     public class InMemoryRepository : IRepository //Implemento (Figlia di) IRepository
     {
 
         //VARIABILI
-        // private List<Corso> courses = new List<Corso>(); //Lista di corsi
-        // private List<EdizioneCorso> courseEditions = new List<EdizioneCorso>(); //Lista di edizioni corsi
+        //Set di elementi: Rifiuta i duplicati ed è estremamente efficiente nel trovare gli elementi
+        private ISet<Aula> classrooms  = new HashSet<Aula>();
+        private ISet<Azienda> companies = new HashSet<Azienda>();
+        private ISet<Categoria> categories = new HashSet<Categoria>();
+        private ISet<Competenza> competences = new HashSet<Competenza>();
 
-        //Posso passare da list a set senza problemi
-        private ISet<Corso> courses = new HashSet<Corso>(); //Set di elementi: Rifiuta i duplicati ed è estremamente efficiente nel trovare gli elementi
+        private ISet<Corso> courses = new HashSet<Corso>(); 
         private ISet<EdizioneCorso> courseEditions = new HashSet<EdizioneCorso>();
+
+        private ISet<EnteFinanziante> lenders = new HashSet<EnteFinanziante>();
+        private ISet<Iscrizione> subscriptions = new HashSet<Iscrizione>();
+        private ISet<Livello> levels = new HashSet<Livello>();
+        private ISet<Modulo> modules = new HashSet<Modulo>();
+
+        private ISet<Persona> people = new HashSet<Persona>();
+        private ISet<Presenza> presences = new HashSet<Presenza>();
+        private ISet<Progetto> projects = new HashSet<Progetto>();
+        private ISet<Report> reports = new HashSet<Report>();
+        private ISet<Skill> skills = new HashSet<Skill>();
 
         //COSTRUTTORE
         public InMemoryRepository()
         {
 
-            #region MyRegion VECCHIA CREAZIONE DATI
+            #region CREAZIONE DATI IN MEMORIA
             //Popolo con dei corsi ed edizioni per vedere se funziona
             //long id, string titolo, string descrizione, int ammontareOre, decimal costoRiferimento, int idLivello, int idProgetto, int idCategoria
             Corso c1 = new Corso(345, "MateFagoilatica", "Addizioni e sottrazioni legumari", 50, 500.50m, 1, 1, 1);

@@ -7,9 +7,13 @@ using System.Threading.Tasks;
 using Scuola.Entities;
 using Microsoft.Extensions.Logging; //L' EF stampa i comandi Sql
 
+/// <summary>
+/// Contesto di scuola: mappatura delle entità tra c# e il database
+/// </summary>
+
 namespace Scuola.Model.Data.EF
 {
-    public partial class EducationContext : DbContext
+    public partial class ScuolaContext : DbContext
     {
         //PROPRIETA'
         public virtual DbSet<Aula> Aule { get; set; }

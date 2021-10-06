@@ -10,5 +10,7 @@ namespace Scuola.Model.Data
     public interface ICorsoRepository : ICrudRepository<Corso , long>  //METODI SPECIFICI PER CORSO
     {
         IEnumerable<Corso> FindByTitleLike(string part);
+        //Dichiara UN METODO SPECIFICO SOLO AD EDIZIONE CORSO
+        //es: IEnumerable<EdizioneCorso> FindAllCoursesByCourseId(string part);
     }
 }

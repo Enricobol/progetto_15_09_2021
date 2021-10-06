@@ -166,7 +166,7 @@ namespace Scuola.Model
         #endregion
 
 
-        //METODI per lettura stringhe (Corrette per ora!)
+        //METODI per lettura stringhe 
         #region METODO ReadChar : Per leggere un tasto, se il tasto è nulloa avvisa ripeti. (usa ReadString)
         private char ReadChar(string prompt)
         {

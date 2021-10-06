@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scuola.Model.Data.EF
+namespace Scuola.Model.Data
 {
-    interface EFIEdizioneCorsoRepository : ICrudRepository<EdizioneCorso, long>
+    public interface IEdizioneCorsoRepository : ICrudRepository<EdizioneCorso, long>  //METODI SPECIFICI PER EDIZIONE CORSO
     {
         //Dichiara UN METODO SPECIFICO SOLO AD EDIZIONE CORSO
         //es: IEnumerable<EdizioneCorso> FindAllCoursesByCourseId(string part);

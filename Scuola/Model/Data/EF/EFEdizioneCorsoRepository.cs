@@ -5,13 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+///  Implementa i metodi specifici solo ad EdizioneCorso
+/// </summary>
+
 namespace Scuola.Model.Data.EF
 {
-    public class EFEdizioneCorsoRepository : EFCrudRepository<EdizioneCorso, long>, EFIEdizioneCorsoRepository
+    public class EFEdizioneCorsoRepository : EFCrudRepository<EdizioneCorso, long>, IEdizioneCorsoRepository
     {
-        public EFEdizioneCorsoRepository(EducationContext ctx) : base(ctx)
+        public EFEdizioneCorsoRepository(ScuolaContext ctx) : base(ctx)
         {
-            //IMPLEMENTA I METODI DICHIARATI IN EFIEdizioneCorsoRepository
+            //IMPLEMENTA I METODI DICHIARATI IN IEdizioneCorsoRepository
             //es: IEnumerable<EdizioneCorso> FindAllCoursesByCourseId(string part)
             //{
             //  bla bla bla

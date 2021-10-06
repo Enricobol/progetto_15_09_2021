@@ -12,7 +12,7 @@ using Scuola.Model.Data.Exceptions;
 
 namespace Scuola.Model.Data
 {
-    class RepositoryDB : IRepository
+    class RepositoryDB : IRepository //Vecchia interfaccia ADO
     {
         private ISet<Corso> courses = new HashSet<Corso>(); //Set di elementi: Rifiuta i duplicati ed è estremamente efficiente nel trovare gli elementi
         private ISet<EdizioneCorso> courseEditions = new HashSet<EdizioneCorso>();
